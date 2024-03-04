@@ -18,32 +18,36 @@ struct  ListNode {
 // Merge two singly-linked lists.
 struct ListNode* mergeTwoLists(struct ListNode* list1, struct ListNode* list2) {
 
+    struct ListNode* temp_list1 = list1;
+    struct ListNode* temp_list2 = list2;
+
     // create a dummy head
     struct ListNode dummy;
     dummy.next = NULL;                    // dummy 结构体变量
     struct ListNode* tail = &dummy;
 
     //compare two lists
-    while (list1 != NULL && list2 != NULL) {
-
-        if (list1->val < list2->val){
-            tail->next = list1;
-            list1 = list1->next;
+    while (temp_list1 != NULL && temp_list2 != NULL) {
+        
+        if (temp_list1->val < temp_list2->val){
+            tail->next = temp_list1;
+            temp_list1 = temp_list1->next;
         } 
         else {
-            tail->next = list2;
-            list2 = list2->next;
+            tail->next = temp_list2;
+            temp_list2 = temp_list2->next;
         }
         tail = tail->next;
     }
     
     // connect the remain value
-    if (list1 !=NULL) {
-        tail->next = list1;
+    if (temp_list1 !=NULL) {
+        tail->next = temp_list1;
     }
-    else if (list2 != NULL) {
-        tail->next = list2;
+    else if (temp_list2 != NULL) {
+        tail->next = temp_list2;
     }
+    printf("%d\n", list1->next->next->val);
 
     return dummy.next;             // dummy.next 将指向合并后的链表的第一个节点
 }
@@ -82,15 +86,17 @@ void freeList(struct ListNode* head) {
 
 int main() {
     //  l1 = [1,2,4], l2 = [1,3,4]
-    struct ListNode* list1 = newNode(1);
-    list1->next = newNode(2);
-    list1->next->next = newNode(4);
+    struct ListNode* example1 = newNode(1);
+    example1->next = newNode(2);
+    example1->next->next = newNode(4);
 
-    struct ListNode* list2 = newNode(1);
-    list2->next = newNode(3);
-    list2->next->next = newNode(4);
+    struct ListNode* example2 = newNode(1);
+    example2->next = newNode(3);
+    example2->next->next = newNode(4);
 
-    struct ListNode* merged = mergeTwoLists(list1, list2);
+    printf("%d\n", example1->next->next->val);
+
+    struct ListNode* merged = mergeTwoLists(example1, example2);
     Output(merged);
     freeList(merged);
     return 0;
