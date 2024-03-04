@@ -71,9 +71,9 @@ void Outputlist(struct ListNode* head) {
         if (head->next !=NULL) {
             printf(",");
         }
-        head = head->next;
+        head = head->next; 
     }
-    printf("]\n");
+    printf("]\n"); 
 }
 
 void freeList(struct ListNode* head) {
@@ -89,8 +89,10 @@ int main() {
 
     struct ListNode* head = NULL;
     appendNode(&head, 1);
-    appendNode(&head, 1);
-    appendNode(&head, 2);
+    appendNode(&head, 3);
+    appendNode(&head, 3);
+    appendNode(&head, 5);
+    appendNode(&head, 5);
     Outputlist(head);
 
     head = deleteDuplicates(head);
