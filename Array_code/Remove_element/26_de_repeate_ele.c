@@ -12,9 +12,10 @@
 #include <stdio.h>
 
 int removeDuplicates(int* nums, int numsSize) {
-    if (numsSize == 0) return 0; // 处理空数组的情况
+    if (numsSize == 0) 
+    return 0; // 处理空数组的情况
 
-    int slow = 1; // 从索引1开始，因为第一个元素总是独特的
+    int slow = 1;
 
     for (int fast = 1; fast < numsSize; fast++) {
         if (nums[fast] != nums[fast - 1]) {
