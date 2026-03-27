@@ -1,1 +1,14 @@
 .vscode
+# 忽略可执行文件
+*.out
+*.exe
+
+# 忽略当前目录下的可执行文件
+2_add_two_list
+
+# 忽略 VS Code 配置
+.vscode/
+
+# 忽略编译中间产物
+*.o
+*.obj
